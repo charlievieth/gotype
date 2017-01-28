@@ -2,11 +2,14 @@ package gotype
 
 import (
 	"go/build"
+	"os"
+	"path/filepath"
 	"testing"
 )
 
+// TODO (CEV): broken - fix.
 func TestCheck(t *testing.T) {
-	const filename = "/Users/Charlie/go/src/git.vieth.io/mgo/gotype/gotype.go"
+	filename := filepath.Join(os.Getenv("GOPATH"), "src", "github.com", "charlievieth", "gotype", "gotype.go")
 	ctxt := &build.Default
 	list, err := Check(ctxt, filename, nil, false, true)
 	if err != nil {
